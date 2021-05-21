@@ -60,9 +60,6 @@ class Add extends React.Component {
                         </Row>
                     </Form.Group>
                     <Form.Group className="d-flex mt-3 justify-content-end">
-                        <Button type="reset" size="lg" variant="outline-dark">
-                            Reset
-                        </Button>
                         <Button type="submit" size="lg" variant="dark">
                             Submit
                         </Button>
