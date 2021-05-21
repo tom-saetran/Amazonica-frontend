@@ -1,4 +1,4 @@
-import { Router, Route, Switch } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
 import Home from "./views/Home"
 import Add from "./views/Add"
