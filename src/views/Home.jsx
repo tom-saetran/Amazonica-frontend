@@ -6,7 +6,7 @@ class Home extends React.Component {
     }
 
     componentDidMount = async () => {
-        this.setState({ posts: await this.props.crud.get() })
+        //this.setState({ posts: await this.props.crud.get() })
     }
 
     render() {
