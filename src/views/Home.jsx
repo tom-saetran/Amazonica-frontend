@@ -1,6 +1,6 @@
-import React from "react";
-import { Container, Row, item } from "react-bootstrap";
-import "../styles/home.css";
+import React from "react"
+import { Container, Row } from "react-bootstrap"
+import "../styles/home.css"
 
 class Home extends React.Component {
     state = {
@@ -8,9 +8,8 @@ class Home extends React.Component {
     }
 
     componentDidMount = async () => {
-        //this.setState({ posts: await this.props.crud.get() })
+        this.setState({ posts: await this.props.crud.products.getAll() })
     }
-
 
     render() {
         return (
@@ -46,8 +45,8 @@ class Home extends React.Component {
                     </Row>
                 </Container>
             </>
-        );
+        )
     }
 }
 
-export default Home;
+export default Home
