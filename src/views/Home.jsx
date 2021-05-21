@@ -18,8 +18,8 @@ class Home extends React.Component {
         console.log(this.state.posts);
     };
 
-    modalClose = () => {
-        console.log("hello")
+    modalClose = (e) => {
+        e.stopPropagation()
         this.setState({modalShow: false})
     }
     render() {
@@ -35,7 +35,7 @@ class Home extends React.Component {
                                     <div className="card border-secondary">
                                         <div className="imageDiv">
 
-                                            <img src={item.image ? item.image : item.imageUrl ? item.imageUrl : "https://via.placeholder.com/420x200?text=HELLO%20WORLD"} className="img-fluid " alt="..." />
+                                            <img className="productImage" src={item.image ? item.image : item.imageUrl ? item.imageUrl : "https://via.placeholder.com/420x200?text=HELLO%20WORLD"} className="img-fluid " alt="..." />
                                         </div>
                                         <div className="card-body">
                                             <h6 className="card-title">
@@ -56,7 +56,7 @@ class Home extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-                                            {this.state.modalShow && <ReviewsModal show={this.state.modalShow} close={this.modalClose}/>}
+                                    {this.state.modalShow && <ReviewsModal id={item._id} crud={this.props.crud} show={this.state.modalShow} close={this.modalClose}></ReviewsModal>}
                                 </div>
                             ))}
                     </Row>
@@ -69,10 +69,16 @@ class Home extends React.Component {
 class ReviewsModal extends React.Component {
 
     state = {
-       ...this.props.product
+        reviews: null
     }
 
+    componentDidMount = async (e) => {
+       
+        let response = await this.props.crud.reviews.getAll(this.props.id)
+        this.setState({reviews: response})
+        console.log(response)
 
+    }
     render() {
 
         return (
@@ -85,16 +91,27 @@ class ReviewsModal extends React.Component {
                     keyboard={false}
                     >
                     
-                    <Modal.Header closeButton>
-                        <Modal.Title>Update Product</Modal.Title>
+                    <Modal.Header >
+                        <Modal.Title>Reviews</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                       {this.state.reviews && this.state.reviews.length > 0 && this.state.reviews.map(review => 
                        
-                   
+                           (
+                               <div key={review._id}>
+                                   <p>{review.comment}</p>
+                                   <span>{review.rate}</span>
+                                   
+                               </div>
+                           )
+                       
+                       )}
+                        
+                        {!this.state.reviews && <Spinner style={{ position: "absolute", left: "50%", translatey: "transform(50%)" }} animation="border" variant="primary" />} 
                     
                      </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={() => this.props.close()}>
+                        <Button variant="secondary" onClick={(e) => this.props.close(e)}>
                             Close
                      </Button>
                        
