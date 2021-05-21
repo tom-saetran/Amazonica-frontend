@@ -20,7 +20,6 @@ class Add extends React.Component {
 
         if(this.state.image) {
 
-        
         const data = new FormData()
         data.append("productImage", this.state.image)
 
@@ -70,7 +69,7 @@ class Add extends React.Component {
                         </Row>
                     </Form.Group>
                     <Form.Group className="d-flex mt-3 justify-content-end">
-                        <Button type="button" size="lg" variant="dark">
+                        <Button type="submit" size="lg" variant="dark">
                             Submit
                         </Button>
                     </Form.Group>
