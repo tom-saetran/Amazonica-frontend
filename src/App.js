@@ -6,6 +6,7 @@ import Edit from "./views/Edit"
 import NavBar from "./components/Navbar"
 import Footer from "./components/Footer"
 import React from "react"
+import ProductPage from "./views/ProductPage"
 
 class App extends React.Component {
   state = {
@@ -80,7 +81,7 @@ class App extends React.Component {
         try {
           if (id === "" || id === undefined || id === null) throw new Error("id must be present")
           if (data === "" || data === undefined || data === null) throw new Error("data must be present")
-          results = await fetch(this.state.endpoint + "products/" + id + "/upload", {
+          results = await fetch(this.state.endpoint + "products/" + id + "/uploadImage", {
             method: "POST",
             body: data
           })
@@ -228,6 +229,7 @@ class App extends React.Component {
           <Route render={routeProps => <Home crud={this.crud} {...routeProps} />} exact path="/" />
           <Route render={routeProps => <Add crud={this.crud} {...routeProps} />} exact path="/add" />
           <Route render={routeProps => <Edit crud={this.crud} {...routeProps} />} exact path="/edit" />
+          <Route render={routeProps => <ProductPage crud={this.crud} {...routeProps} />} exact path="/ProductPage/:id" />
         </Switch>
         <Route render={routeProps => <Footer {...routeProps} />} />
       </Router>

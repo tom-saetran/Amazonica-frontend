@@ -15,8 +15,18 @@ class Add extends React.Component {
     submit = async e => {
         if (!this.state.image && this.state.imageUrl === "") e.preventDefault()
         console.log("Submit")
-        //let response = await this.props.post(this.state)
-        //response && this.props.history.push("blog/" + (await response._id))
+        let response = await this.props.crud.products.post(this.state)
+        console.log(response)
+
+        if(this.state.image) {
+
+        
+        const data = new FormData()
+        data.append("productImage", this.state.image)
+
+        const responseImage = await this.props.crud.products.postImage(response._id, data)
+        console.log(responseImage)
+        }
     }
 
     render() {
@@ -53,14 +63,14 @@ class Add extends React.Component {
                                 <Form.Label>Image URL</Form.Label>
                                 <Form.Control value={this.state.imageUrl} onChange={e => this.setState({ imageUrl: e.target.value })} size="lg" placeholder="Image URL" />
                             </Col>
-                            <Col>
-                                <Form.Label className="pt-2">... or upload</Form.Label>
+                            <Col className="pt-4">
+                                <Form.Label className="pt-4">... or upload</Form.Label>
                                 <Form.Control onChange={e => this.setState({ image: e.target.files[0] })} type="file" />
                             </Col>
                         </Row>
                     </Form.Group>
                     <Form.Group className="d-flex mt-3 justify-content-end">
-                        <Button type="submit" size="lg" variant="dark">
+                        <Button type="button" size="lg" variant="dark">
                             Submit
                         </Button>
                     </Form.Group>
