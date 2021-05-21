@@ -1,0 +1,100 @@
+.homeContainer {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.imageDiv {
+    background-color: "#F0F0F0";
+}
+
+div > img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5%;
+}
+
+.productImage {
+    object-fit: cover;
+}
+
+p.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
+hr {
+    height: 2px;
+    border-width: 0px;
+    color: gray;
+    background-color: #f0f0f0;
+}
+
+div.item-price {
+    margin-left: 10%;
+    color: #fbba35;
+    font-size: 18px;
+}
+
+div#icon-2 {
+    margin-right: 25px;
+    margin-left: 50px;
+}
+
+div#icon-1 > a:hover {
+    color: #fbb72c;
+}
+
+div#icon-2 > a:hover {
+    color: #28a745;
+}
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+}
+
+.text-dimgray,
+.text-dimgrey {
+    color: dimgray !important;
+}
+
+.text-warm {
+    color: khaki !important;
+}
+
+.no-shadow,
+.no-shadow .btn-check:focus + .btn,
+.btn:focus {
+    box-shadow: none !important;
+}
+
+.bg-dim:active,
+.bg-dim-active,
+.bg-dim-active:active,
+.bg-dim-active:hover {
+    background-color: dimgray !important;
+    color: white;
+}
+
+.bg-dim {
+    background-color: white;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: #212529;
+}
+
+.footer-link:active {
+    color: dimgray;
+}
