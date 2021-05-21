@@ -3,13 +3,14 @@ import { Container, Row, item } from "react-bootstrap";
 import "../styles/home.css";
 
 class Home extends React.Component {
-    /*    state = {
+    state = {
         posts: null
     }
 
     componentDidMount = async () => {
-        this.setState({ posts: await this.props.crud.get() })
-    } */
+        //this.setState({ posts: await this.props.crud.get() })
+    }
+
 
     render() {
         return (
