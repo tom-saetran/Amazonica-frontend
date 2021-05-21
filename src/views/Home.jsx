@@ -33,7 +33,7 @@ class Home extends React.Component {
                                         </div>
                                         <div className="d-flex justify-content-between">
                                             <div id="icon-2">
-                                                <a href="">
+                                                <a href="/">
                                                     <i className="fa fa-lg fa-shopping-cart"></i>
                                                 </a>
                                             </div>
